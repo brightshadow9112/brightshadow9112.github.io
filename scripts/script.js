@@ -335,7 +335,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const payload = {
             contents: [{ role: "user", parts: [{ text: prompt }] }],
         };
-        const apiKey = ""; // Canvas will automatically provide this key. Do not modify.
+        // *** IMPORTANT: Replace 'YOUR_GEMINI_API_KEY' with your actual Gemini API Key obtained from Google AI Studio (aistudio.google.com) ***
+        // Without a valid API key, you will encounter a 403 Forbidden error.
+        const apiKey = "AIzaSyAe1AwuLwh5TtfStiVre0AEtIIOG84NW10"; // <--- ENTER YOUR API KEY HERE
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
         try {
@@ -346,7 +348,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                // More detailed error logging for debugging 403 or other issues
+                const errorData = await response.json();
+                console.error("API Error Response:", errorData);
+                throw new Error(`HTTP error! status: ${response.status} - ${errorData.error.message || 'Unknown error'}`);
             }
 
             const result = await response.json();
