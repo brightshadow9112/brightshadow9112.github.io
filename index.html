@@ -1,15 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Page Title</title>
-<link rel="stylesheet" href="./styles/styles.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong">
-<script src="./scripts/script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume & AI Assistant</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/styles.css">
+  <script src="./scripts/script.js"></script>
 </head>
-<body>
+<body class="light-mode">
+    <!-- Theme Toggle Switch -->
+    <div class="theme-switch-wrapper">
+        <em id="sun-icon">☀️</em>
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" aria-label="Toggle dark mode">
+            <div class="slider round"></div>
+        </label>
+        <em id="moon-icon">🌙</em>
+    </div>
 
-<h1>Welcome to Kunal's Page</h1>
-<p>This page is dedicated to be a interactive session to show case few of the capabilities of a normal webpage</p>
+    <div class="container">
+        <!-- Resume Section -->
+        <div class="resume-section" id="resume-section">
+            <!-- Resume content will be dynamically loaded here by JavaScript -->
+        </div>
+
+        <!-- AI Chatbot Section (Floating) -->
+        <div class="chat-section" id="floating-chat-section">
+            <button id="chat-close-button" aria-label="Close chatbox">✖</button>
+            <h2 class="text-xl text-center mb-4" style="color: var(--subheading-color-light);">Ask about Jane's Resume!</h2>
+            <div id="chatbox">
+                <div class="ai-message chat-message">Hello! I'm an AI assistant. I can answer questions about Jane Doe's resume. What would you like to know?</div>
+            </div>
+            <div id="chat-input-container">
+                <input type="text" id="user-input" placeholder="Type your question here..." aria-label="Type your question here">
+                <div class="action-buttons">
+                    <button id="send-button">Send</button>
+                </div>
+            </div>
+        </div>
+        <!-- Chat Toggle Button -->
+        <button id="chat-toggle-button">💬</button>
+    </div>
+
 
 </body>
 </html>
