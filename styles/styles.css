@@ -1,3 +1,4 @@
+
 /* Custom CSS for base styles and theme toggling */
 :root {
     --bg-color-light: #f0f2f5;
@@ -14,6 +15,8 @@
     --input-focus-light: #4299e1;
     --button-bg-light: #4299e1;
     --button-hover-light: #3182ce;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --floating-shadow-light: rgba(0, 0, 0, 0.15);
 }
 
 .dark-mode {
@@ -31,6 +34,8 @@
     --input-focus-light: #63b3ed;
     --button-bg-light: #4299e1;
     --button-hover-light: #3182ce;
+    --shadow-light: rgba(0, 0, 0, 0.3);
+    --floating-shadow-light: rgba(0, 0, 0, 0.4);
 }
 
 body {
@@ -47,15 +52,15 @@ body {
 .container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 20px; /* Equivalent to gap-x-5 / gap-y-5 */
     max-width: 1200px;
     width: 100%;
 }
 .resume-section {
     background-color: var(--resume-bg-light);
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    padding: 30px;
+    box-shadow: 0 4px 20px var(--shadow-light);
+    padding: 30px; /* Equivalent to p-8 */
     flex: 2;
     min-width: 300px;
     max-width: 700px;
@@ -63,30 +68,30 @@ body {
     border: 1px solid var(--border-color-light);
     color: var(--text-color-light);
 }
-.dark-mode .resume-section {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
+/* No specific dark-mode box-shadow for resume-section as it's handled by --shadow-light */
 
 h1 {
     color: var(--heading-color-light);
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Equivalent to mb-5 */
+    font-size: 1.875rem; /* Equivalent to text-3xl */
     transition: color 0.3s ease;
 }
 h2 {
     color: var(--subheading-color-light);
     font-weight: 600;
-    margin-top: 25px;
-    margin-bottom: 15px;
+    margin-top: 25px; /* Equivalent to mt-6 */
+    margin-bottom: 15px; /* Equivalent to mb-4 */
     border-bottom: 2px solid var(--border-color-light);
     padding-bottom: 5px;
+    font-size: 1.25rem; /* Equivalent to text-xl */
     transition: color 0.3s ease, border-color 0.3s ease;
 }
 h3 {
-    color: var(--text-color-light); /* Kept similar to text color */
+    color: var(--text-color-light);
     font-weight: 500;
-    margin-top: 15px;
-    margin-bottom: 8px;
+    margin-top: 15px; /* Equivalent to mt-4 */
+    margin-bottom: 8px; /* Equivalent to mb-2 */
     transition: color 0.3s ease;
 }
 p, li {
@@ -94,11 +99,28 @@ p, li {
     line-height: 1.6;
     margin-bottom: 5px;
     transition: color 0.3s ease;
+    font-size: 1rem; /* Base font size, default */
+}
+p.text-md { /* Specific for main title description */
+    font-size: 1rem;
+}
+p.text-sm { /* For dates/locations */
+    font-size: 0.875rem; /* Equivalent to text-sm */
+    color: #6b7280; /* Tailwind gray-500 */
+}
+.dark-mode p.text-sm {
+    color: var(--subheading-color-light); /* Adjusted for dark mode */
 }
 ul {
     list-style: disc;
-    margin-left: 20px;
+    margin-left: 24px; /* Equivalent to ml-6 */
     margin-bottom: 10px;
+}
+ul li {
+    color: #374151; /* Tailwind gray-700 */
+}
+.dark-mode ul li {
+    color: var(--text-color-light);
 }
 a {
     color: #3182ce;
@@ -111,34 +133,57 @@ a:hover {
 .dark-mode a {
     color: #90cdf4; /* Lighter blue for dark mode links */
 }
+.contact-links span { /* For the pipe separator */
+    margin-right: 16px; /* Equivalent to mr-4 */
+}
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 24px; /* Equivalent to gap-x-6 */
+    row-gap: 8px; /* Equivalent to gap-y-2 */
+    color: #374151; /* Tailwind gray-700 */
+}
+.dark-mode .skills-container {
+    color: var(--text-color-light);
+}
+
+/* Responsive for resume section */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .resume-section {
+        width: 95%; /* Full width on smaller screens */
+        max-width: 600px; /* Constrain max width for better readability */
+    }
+}
+
 
 /* Floating Chatbox Styles */
 .chat-section {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 350px; /* Fixed width for the floating chatbox */
-    height: 500px; /* Fixed height */
+    width: 350px;
+    height: 500px;
     background-color: var(--chat-bg-light);
     border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* More prominent shadow for floating */
+    box-shadow: 0 8px 30px var(--floating-shadow-light);
     padding: 20px;
     display: flex;
     flex-direction: column;
-    z-index: 1000; /* Ensure it's on top */
+    z-index: 1000;
     border: 1px solid var(--border-color-light);
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease, border-color 0.3s ease;
-    transform: translateY(100%); /* Start hidden below screen */
+    transform: translateY(100%);
     opacity: 0;
-    pointer-events: none; /* Disable interaction when hidden */
+    pointer-events: none;
 }
 .chat-section.open {
-    transform: translateY(0); /* Slide up into view */
+    transform: translateY(0);
     opacity: 1;
-    pointer-events: auto; /* Enable interaction when open */
-}
-.dark-mode .chat-section {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    pointer-events: auto;
 }
 
 /* Toggle Button for Chatbox */
@@ -149,7 +194,7 @@ a:hover {
     background-color: #4299e1;
     color: white;
     border: none;
-    border-radius: 50%; /* Make it circular */
+    border-radius: 50%;
     width: 60px;
     height: 60px;
     font-size: 24px;
@@ -158,7 +203,7 @@ a:hover {
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1001; /* Above chatbox when hidden */
+    z-index: 1001;
     transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out, opacity 0.3s ease;
 }
 #chat-toggle-button:hover {
@@ -169,7 +214,7 @@ a:hover {
     transform: scale(0.95);
 }
 .chat-section.open + #chat-toggle-button {
-    opacity: 0; /* Hide toggle button when chat is open */
+    opacity: 0;
     pointer-events: none;
 }
 
@@ -193,7 +238,6 @@ a:hover {
 .dark-mode #chat-close-button:hover {
      background-color: var(--subheading-color-light);
 }
-
 
 /* Chatbox content specific styles */
 #chatbox {
@@ -223,7 +267,7 @@ a:hover {
     align-self: flex-end;
     text-align: right;
     border-bottom-right-radius: 2px;
-    color: #2d3748; /* Darker text for user messages */
+    color: #2d3748;
 }
 .dark-mode .user-message {
     color: #edf2f7;
@@ -233,7 +277,7 @@ a:hover {
     align-self: flex-start;
     text-align: left;
     border-bottom-left-radius: 2px;
-    color: #2d3748; /* Darker text for AI messages */
+    color: #2d3748;
 }
 .dark-mode .ai-message {
     color: #edf2f7;
@@ -252,7 +296,7 @@ a:hover {
     outline: none;
     font-size: 0.95rem;
     transition: border-color 0.2s ease-in-out, background-color 0.3s ease, color 0.3s ease;
-    background-color: var(--resume-bg-light); /* Match resume/chat section background */
+    background-color: var(--resume-bg-light);
     color: var(--text-color-light);
 }
 #user-input:focus {
@@ -263,7 +307,7 @@ a:hover {
     gap: 10px;
     justify-content: flex-end;
 }
-#send-button { /* Only send button remains */
+#send-button {
     background-color: var(--button-bg-light);
     color: white;
     padding: 10px 15px;
@@ -316,18 +360,17 @@ a:hover {
 @media (max-width: 768px) {
     .chat-section {
         width: 90%;
-        max-height: 70vh; /* Adjust height for smaller screens */
+        max-height: 70vh;
         bottom: 10px;
         right: 5%;
-        left: 5%; /* Center horizontally */
-        transform: translateY(100%); /* Keep hidden below */
+        left: 5%;
+        transform: translateY(100%);
     }
     #chat-toggle-button {
         bottom: 10px;
         right: 10px;
     }
 }
-
 
 /* Theme Toggle Switch */
 .theme-switch-wrapper {
@@ -338,7 +381,7 @@ a:hover {
     align-items: center;
     z-index: 1000;
 }
-.theme-switch-wrapper em { /* Moon/Sun icon placeholder */
+.theme-switch-wrapper em {
     font-style: normal;
     margin: 0 10px;
     font-size: 1.2rem;
