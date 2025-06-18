@@ -15,32 +15,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Structured resume data
     const resumeData = {
-        name: "Jane Doe",
-        title: "Software Engineer | Full-Stack Developer | Problem Solver",
+        name: "Kunal Mehrotra",
+        title: "Senior Technical Lead | Front End Developer | Tech Lead",
         contact: [
-            { type: "email", value: "jane.doe@example.com", url: "mailto:jane.doe@example.com" },
+            { type: "email", value: "brightshadow9112@gmail.com", url: "mailto:brightshadow9112@gmail.com" },
             { type: "phone", value: "+1 (123) 456-7890", url: "tel:+1234567890" },
-            { type: "linkedin", value: "LinkedIn", url: "https://linkedin.com/in/janedoe" },
-            { type: "github", value: "GitHub", url: "https://github.com/janedoe" }
+            { type: "linkedin", value: "LinkedIn", url: "https://linkedin.com/in/mehrotra-kunal" },
+            { type: "github", value: "GitHub", url: "https://github.com/brightshadow9112" }
         ],
-        summary: "Highly motivated and detail-oriented Software Engineer with 5 years of experience in developing robust and scalable web applications. Proficient in JavaScript, Python, React, Node.js, and database management. Proven ability to quickly learn new technologies and deliver high-quality solutions in fast-paced environments.",
+        summary: "A Front End Developer and team lead, adept at delivering high-quality, responsive UI/UX solutions while managing and guiding the team. Balances individual coding tasks with overseeing project timelines, ensuring team alignment, code quality, timely delivery of client requirements. Also, have been an active participant in providing inputs for RFI / RFPs at organization level and imparting training and guidance for the new joiners in the organization.",
         experience: [
             {
-                title: "Senior Software Engineer",
-                company: "Tech Solutions Inc.",
-                dates: "March 2022 – Present",
-                location: "San Francisco, CA",
+                title: "Senior Technical Lead",
+                company: "EY GDS.",
+                dates: "September 2022 – Present",
+                location: "Hyderabad, India",
                 responsibilities: [
-                    "Led the development of a new microservices-based architecture using Node.js and AWS Lambda, improving system scalability by 40%.",
-                    "Designed and implemented a real-time data visualization dashboard with React and D3.js, increasing data accessibility for product teams.",
+                    "While working as a senior technical lead. I have gained experience in leading the AEM UI team, working on AEM projects - where we have built custom components, updated core components and explored various aspects of frontend. Gained insights and expereince on web analytics.",
+                    "Designed and implemented a real-time data visualization dashboard with Vuejs, increasing data accessibility for product teams.",
                     "Mentored junior engineers and conducted code reviews, ensuring adherence to best practices and high code quality.",
                     "Collaborated with cross-functional teams to define project requirements and deliver features on time."
                 ]
             },
             {
-                title: "Software Engineer",
-                company: "Innovate Co.",
-                dates: "June 2019 – February 2022",
+                title: "Senior Associate",
+                company: "Cognizant Technology Solutions.",
+                dates: "June 2016 – August 2022",
                 location: "New York, NY",
                 responsibilities: [
                     "Developed and maintained RESTful APIs using Python (Django/Flask) for a high-traffic e-commerce platform.",
